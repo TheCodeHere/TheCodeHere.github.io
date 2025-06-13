@@ -5,20 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>JorgeGZapata.github.io</title>
   <style>
+    :root {
+      --bg-color: #fdfdfd;
+      --text-color: #333;
+      --header-bg: #f0f0f0;
+      --border-color: #ddd;
+      --link-color: #555;
+      --date-color: #888;
+    }
+
+    body.dark {
+      --bg-color: #1a1a1a;
+      --text-color: #f0f0f0;
+      --header-bg: #2a2a2a;
+      --border-color: #444;
+      --link-color: #ddd;
+      --date-color: #aaa;
+    }
+
     body {
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #fdfdfd;
-      color: #333;
+      background-color: var(--bg-color);
+      color: var(--text-color);
       line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
     }
 
     header {
-      background: #f0f0f0;
+      background: var(--header-bg);
       padding: 1rem 2rem;
       text-align: center;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid var(--border-color);
     }
 
     header h1 {
@@ -32,7 +51,7 @@
 
     nav a {
       text-decoration: none;
-      color: #555;
+      color: var(--link-color);
       margin: 0 10px;
     }
 
@@ -53,7 +72,7 @@
 
     .post-list li {
       padding: 1rem 0;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid var(--border-color);
     }
 
     .post-list li:last-child {
@@ -65,21 +84,47 @@
       font-weight: bold;
     }
 
+    .post-title a {
+      color: var(--link-color);
+      text-decoration: none;
+    }
+
+    .post-title a:hover {
+      text-decoration: underline;
+    }
+
     .post-date {
       font-size: 0.9rem;
-      color: #888;
+      color: var(--date-color);
+    }
+
+    #toggle-dark {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      background-color: transparent;
+      color: var(--link-color);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    #toggle-dark:hover {
+      background-color: var(--border-color);
     }
   </style>
 </head>
 
 <body>
   <header>
-    <h1>Language Model Posts</h1>
+    <h1>The Spanish ML Blog by Jorge G. Zapata</h1>
     <nav>
       <a href="#">Home</a>
       <a href="#">Tags</a>
       <a href="#">About</a>
     </nav>
+    <button id="toggle-dark">Toggle Dark Mode</button>
   </header>
 
   <main>
@@ -98,5 +143,13 @@
       </li>
     </ul>
   </main>
+
+  <script>
+    const button = document.getElementById('toggle-dark');
+    button.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+    });
+  </script>
+
 </body>
 </html>
