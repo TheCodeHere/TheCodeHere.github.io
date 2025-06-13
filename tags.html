@@ -50,6 +50,13 @@
       text-decoration: underline;
     }
 
+    #toggle-dark img {
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+
     .tag-list {
       max-width: 700px;
       margin: 2rem auto;
@@ -104,6 +111,9 @@
     <a href="index.html">Home</a> |
     <a href="tags.html">Tags</a> |
     <a href="#">About</a>
+    <span id="toggle-dark">
+        <img id="theme-icon" src="https://raw.githubusercontent.com/TheCodeHere/TheCodeHere.github.io/547fc1827d29deccf4dbeeb2c8684f689482bbd4/Icons/sun-svgrepo-com.svg" alt="Theme icon">
+      </span>
   </nav>
 
   <h1>Browse by Tags</h1>
@@ -208,9 +218,37 @@
     renderTagList();
 
     // Persist dark mode
-    if (localStorage.getItem('theme') === 'dark') {
+    /*if (localStorage.getItem('theme') === 'dark') {
       document.body.classList.add('dark');
+    }*/
+    const toggleButton = document.getElementById('toggle-dark');
+    const themeIcon = document.getElementById('theme-icon');
+
+    const sunIcon = 'https://raw.githubusercontent.com/TheCodeHere/TheCodeHere.github.io/547fc1827d29deccf4dbeeb2c8684f689482bbd4/Icons/sun-svgrepo-com.svg';
+    const moonIcon = 'https://raw.githubusercontent.com/TheCodeHere/TheCodeHere.github.io/547fc1827d29deccf4dbeeb2c8684f689482bbd4/Icons/moon-svgrepo-com.svg';
+
+    // Cambiar ícono dependiendo del modo
+    function updateIcon(isDark) {
+      themeIcon.src = isDark ? sunIcon : moonIcon;
+      themeIcon.alt = isDark ? "Sun icon" : "Moon icon";
     }
+
+    // Cambiar tema y guardar en localStorage
+    function toggleTheme() {
+      const isDark = document.body.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      updateIcon(isDark);
+    }
+
+    // Inicializar desde localStorage
+    window.onload = () => {
+      const savedTheme = localStorage.getItem('theme');
+      const isDark = savedTheme === 'dark';
+      if (isDark) document.body.classList.add('dark');
+      updateIcon(isDark);
+    }
+
+    toggleButton.addEventListener('click', toggleTheme);
   </script>
 </body>
 </html>
