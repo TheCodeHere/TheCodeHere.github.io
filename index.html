@@ -97,7 +97,7 @@
       font-size: 0.9rem;
       color: var(--date-color);
     }
-    
+
     #toggle-dark {
       position: absolute;
       top: 1rem;
@@ -111,8 +111,8 @@
     }
 
     #toggle-dark img {
-      width: 24px;
-      height: 24px;
+      width: 4px;
+      height: 4px;
       transition: filter 0.3s;
     }
 
@@ -121,29 +121,32 @@
 
 <body>
   <header>
-    <h1>The Spanish ML Blog by Jorge G. Zapata</h1>
+    <h1>The Spanish ML Blog</h1>
+    <h2>by Jorge G. Zapata</h2>
     <nav>
       <a href="#">Home</a>
       <a href="#">Tags</a>
-      <a href="#">About</a>
+      <a href="#">About</a> |
+      <span id="toggle-dark">
+        <img id="theme-icon" src="https://raw.githubusercontent.com/TheCodeHere/TheCodeHere.github.io/3c3703538361b8011074af18568980bfab8e3e39/Icons/sun-svgrepo-com.svg" alt="Theme icon">
+      </span>
     </nav>
-
-    <button id="toggle-dark" aria-label="Toggle dark mode">
-      <img id="theme-icon" src="https://www.svgrepo.com/show/532889/sun.svg" alt="Theme icon">
-    </button>
   </header>
 
   <main>
     <ul class="post-list">
       <li>
+        <img class="post-image" src="https://placehold.co/600x400" alt="Post Cover">
         <div class="post-title"><a href="#">Post #1</a></div>
         <div class="post-date">January 1, 2025</div>
       </li>
       <li>
+        <img class="post-image" src="https://placehold.co/600x400" alt="Post Cover">
         <div class="post-title"><a href="#">Post #2</a></div>
         <div class="post-date">January 2, 2025</div>
       </li>
       <li>
+        <img class="post-image" src="https://placehold.co/600x400" alt="Post Cover">
         <div class="post-title"><a href="#">Post #3</a></div>
         <div class="post-date">January 3, 2025</div>
       </li>
@@ -155,8 +158,8 @@
     const toggleButton = document.getElementById('toggle-dark');
     const themeIcon = document.getElementById('theme-icon');
 
-    const sunIcon = 'https://www.svgrepo.com/show/532889/sun.svg';
-    const moonIcon = 'https://www.svgrepo.com/show/532875/moon.svg';
+    const sunIcon = 'https://raw.githubusercontent.com/TheCodeHere/TheCodeHere.github.io/3c3703538361b8011074af18568980bfab8e3e39/Icons/sun-svgrepo-com.svg';
+    const moonIcon = 'https://raw.githubusercontent.com/TheCodeHere/TheCodeHere.github.io/3c3703538361b8011074af18568980bfab8e3e39/Icons/moon-svgrepo-com.svg';
 
     // Cambiar ícono dependiendo del modo
     function updateIcon(isDark) {
