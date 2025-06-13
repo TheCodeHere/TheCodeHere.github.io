@@ -64,8 +64,8 @@
     }
 
     #toggle-dark img {
-      width: 5px;
-      height: 5px;
+      width: 16px;
+      height: 16px;
       vertical-align: middle;
       cursor: pointer;
     }
@@ -99,7 +99,7 @@
     }
 
     .post-title {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: bold;
     }
 
@@ -117,13 +117,32 @@
       color: var(--date-color);
     }
 
+    .post-excerpt {
+      font-size: 1rem;
+      margin: 0.5rem 0 1rem;
+    }
+
+    .post-tags {
+      margin-top: 0.5rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background-color: var(--tag-bg);
+      color: var(--tag-color);
+      padding: 0.2em 0.6em;
+      margin-right: 0.4em;
+      border-radius: 12px;
+      font-size: 0.8rem;
+    }
+
   </style>
 </head>
 
 <body>
   <header>
     <h1>The Spanish ML Blog</h1>
-    <h2>by Jorge G. Zapata</h2>
+    <h3>by Jorge G. Zapata</h3>
     <nav>
       <a href="#">Home</a>
       <a href="#">Tags</a>
@@ -139,16 +158,34 @@
       <li>
         <img class="post-image" src="https://placehold.co/600x400" alt="Post Cover">
         <div class="post-title"><a href="#">Post #1</a></div>
+        <div class="post-excerpt">Brief description #1.</div>
+        <div class="post-tags">
+          <span class="tag">NLP</span>
+          <span class="tag">Transformers</span>
+          <span class="tag">Survey</span>
+        </div>
         <div class="post-date">January 1, 2025</div>
       </li>
       <li>
         <img class="post-image" src="https://placehold.co/600x400" alt="Post Cover">
         <div class="post-title"><a href="#">Post #2</a></div>
+        <div class="post-excerpt">Brief description #2.</div>
+        <div class="post-tags">
+          <span class="tag">Prompting</span>
+          <span class="tag">LLMs</span>
+          <span class="tag">Few-shot</span>
+        </div>
         <div class="post-date">January 2, 2025</div>
       </li>
       <li>
         <img class="post-image" src="https://placehold.co/600x400" alt="Post Cover">
         <div class="post-title"><a href="#">Post #3</a></div>
+        <div class="post-excerpt">Brief description #3.</div>
+        <div class="post-tags">
+          <span class="tag">Reasoning</span>
+          <span class="tag">Chain-of-Thought</span>
+          <span class="tag">AI Alignment</span>
+        </div>
         <div class="post-date">January 3, 2025</div>
       </li>
     </ul>
