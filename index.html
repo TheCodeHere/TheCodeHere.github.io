@@ -156,6 +156,8 @@
   <main>
     <ul class="post-list" id="post-list">
       <!-- Aquí se insertarán dinámicamente los posts -->
+
+      <div id="post-list">Cargando publicaciones...</div>
       
       <li>
         <img class="post-image" src="https://raw.githubusercontent.com/TheCodeHere/TheCodeHere.github.io/547fc1827d29deccf4dbeeb2c8684f689482bbd4/Portraits/image_placeholder_600x400.svg" alt="Post Cover">
@@ -199,7 +201,7 @@
     </ul>
   </main>
 
-  <div id="post-list">Cargando publicaciones...</div>
+  
 
   <script>
   fetch("posts/posts.json")
@@ -213,11 +215,20 @@
       posts.forEach(post => {
         const li = document.createElement("li");
 
+        // Determinar la bandera según el idioma
+        let flag = "";
+        switch (post.language) {
+          case "es": flag = "https://raw.githubusercontent.com/TheCodeHere/TheCodeHere.github.io/2d687b063017ac20b914e315a7a0ada6c1cccb2c/Icons/flag-for-flag-mexico-svgrepo-com.svg"; break;
+          case "en": flag = "https://raw.githubusercontent.com/TheCodeHere/TheCodeHere.github.io/2d687b063017ac20b914e315a7a0ada6c1cccb2c/Icons/usa-svgrepo-com.svg"; break;
+          // puedes agregar más casos si deseas
+          default: flag = "https://www.svgrepo.com/show/520735/flag.svg";
+        }
+
         const tagsHTML = post.tags.map(tag => `<span class="tag">${tag}</span>`).join(" ");
 
         li.innerHTML = `
           <img class="post-image" src="${post.image}" alt="Post Cover">
-          <div class="post-title"><a href="${post.link}">${post.title}</a></div>
+          <div class="post-title"><a href=post.html?post="${post.link}">${post.title} [${post.language} <img src=${flag} alt="USA" style="width: 20px; vertical-align: middle; margin-right: 6px;">]</a></div>
           <div class="post-excerpt">${post.excerpt}</div>
           <div class="post-tags">${tagsHTML}</div>
           <div class="post-date">${post.date}</div>
