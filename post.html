@@ -77,14 +77,13 @@
       contentDiv.innerHTML = "<p style='color:red;'>No se especificó un post.</p>";
     } else {
       //const basePath = window.location.pathname.split('/').slice(0, -1).join('/');
-      const url = `${location.origin}${location.pathname.replace(/\/[^\/]*$/, '')}/posts/${post}.markdown`;
-      //const url = `TheCodeHere.github.io/posts/${post}.markdown`;
+      //const url = `${location.origin}${location.pathname.replace(/\/[^\/]*$/, '')}/posts/${post}.markdown`;
+      const url = `https://github.com/TheCodeHere/TheCodeHere.github.io/blob/main/posts/post-ejemplo.markdown`
 
       console.log("Valor de URL:", url);
 
-      url = `https://github.com/TheCodeHere/TheCodeHere.github.io/blob/main/posts/post-ejemplo.markdown`
-
-      console.log("Valor de URL:", url);
+      //url = `https://github.com/TheCodeHere/TheCodeHere.github.io/blob/main/posts/post-ejemplo.markdown`
+      //console.log("Valor de URL:", url);
 
       fetch(url)
         .then(response => {
