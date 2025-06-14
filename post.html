@@ -70,11 +70,15 @@
     const post = params.get('post');
     const contentDiv = document.getElementById('post-content');
 
+    const debugDiv = document.getElementById('debug');
+    debugDiv.innerText = `Valor de post: ${post}\nParámetros completos: ${params.toString()}`;
+
     if (!post) {
       contentDiv.innerHTML = "<p style='color:red;'>No se especificó un post.</p>";
     } else {
-      const basePath = window.location.pathname.split('/').slice(0, -1).join('/');
-      const url = `${basePath}/posts/${post}.markdown`;
+      //const basePath = window.location.pathname.split('/').slice(0, -1).join('/');
+      const url = `${location.origin}${location.pathname.replace(/\/[^\/]*$/, '')}/posts/${post}.markdown`;
+      //const url = `TheCodeHere.github.io/posts/${post}.markdown`;
 
       fetch(url)
         .then(response => {
