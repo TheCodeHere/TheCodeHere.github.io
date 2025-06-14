@@ -82,6 +82,8 @@
 
       console.log("Valor de URL:", url);
 
+      url = `https://github.com/TheCodeHere/TheCodeHere.github.io/blob/main/posts/post-ejemplo.markdown`
+
       fetch(url)
         .then(response => {
           if (!response.ok) throw new Error("No se encontró el post.");
