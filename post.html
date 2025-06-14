@@ -56,6 +56,7 @@
     }
   </style>
 </head>
+
 <body>
   <nav>
     <a href="index.html">Home</a> | <a href="tags.html">Tags</a>
@@ -70,21 +71,30 @@
     const post = params.get('post');
     const contentDiv = document.getElementById('post-content');
 
-    console.log("Valor de params:", params);
-    console.log("Valor de post:", post);
+    //console.log("Valor de params:", params);
+    //console.log("Valor de post:", post);
 
     if (!post) {
       contentDiv.innerHTML = "<p style='color:red;'>No se especificó un post.</p>";
     } else {
-      //const basePath = window.location.pathname.split('/').slice(0, -1).join('/');
-      const url = `${location.origin}${location.pathname.replace(/\/[^\/]*$/, '')}/posts/${post}.html`;
-      //const url = `/blob/main/posts/post-ejemplo.markdown`
+      const url = `${location.origin}${location.pathname.replace(/\/[^\/]*$/, '')}/posts/${post}.md`;
 
       console.log("Valor de URL:", url);
 
-      //url = `https://github.com/TheCodeHere/TheCodeHere.github.io/blob/main/posts/post-ejemplo.markdown`
-      //console.log("Valor de URL:", url);
+      fetch(url)
+        .then(response => {
+          if (!response.ok) throw new Error("No se encontró el post.");
+          return response.text();
+        })
+        .then(markdown => {
+          const html = marked.parse(markdown);
+          document.getElementById('content').innerHTML = html;
+        })
+        .catch(error => {
+          document.getElementById('content').innerHTML = `<p style="color:red;">Error: ${error.message}</p>`;
+        });
 
+      /*
       fetch(url)
         .then(response => {
           if (!response.ok) throw new Error("No se encontró el post.");
@@ -114,6 +124,7 @@
           contentDiv.innerHTML = `<p style="color:red;">Error: ${err.message}</p>`;
           console.error(err);
         });
+      */
     }
   </script>
 </body>
