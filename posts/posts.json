@@ -8,5 +8,15 @@
     "date": "January 4, 2025",
     "language": "Es",
     "link": "post-ejemplo"
+  },
+  {
+  "id": "post-1",
+  "title": "Post-Test",
+  "tags": ["tag3", "tag4", "tag5"],
+  "excerpt": "Post de prueba 2",
+  "image": "https://github.com/TheCodeHere/TheCodeHere.github.io/blob/main/posts/posts_images/VAE_Basic.png?raw=true",
+  "date": "January 5, 2025",
+  "language": "En",
+  "link": "post2"
   }
 ]

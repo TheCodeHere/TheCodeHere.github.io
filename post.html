@@ -99,8 +99,7 @@
     <span id="toggle-dark" style="cursor: pointer;">
         <img id="theme-icon"
              src="https://raw.githubusercontent.com/TheCodeHere/TheCodeHere.github.io/547fc1827d29deccf4dbeeb2c8684f689482bbd4/Icons/sun-svgrepo-com.svg" 
-             alt="Theme icon"
-             style="width: 20px; height: 20px;">
+             alt="Theme icon">
     </span>
   </nav>
 
@@ -134,17 +133,16 @@
     }
 
     // BOTTON
-    
     const toggleDark = document.getElementById("toggle-dark");
     const themeIcon = document.getElementById("theme-icon");
 
     const setTheme = (theme) => {
       if (theme === "dark") {
         document.body.classList.add("dark-mode");
-        themeIcon.src = "https://raw.githubusercontent.com/TheCodeHere/TheCodeHere.github.io/547fc1827d29deccf4dbeeb2c8684f689482bbd4/Icons/moon-svgrepo-com.svg";
+        themeIcon.src = "https://raw.githubusercontent.com/TheCodeHere/TheCodeHere.github.io/547fc1827d29deccf4dbeeb2c8684f689482bbd4/Icons/sun-svgrepo-com.svg";
       } else {
         document.body.classList.remove("dark-mode");
-        themeIcon.src = "https://raw.githubusercontent.com/TheCodeHere/TheCodeHere.github.io/547fc1827d29deccf4dbeeb2c8684f689482bbd4/Icons/sun-svgrepo-com.svg";
+        themeIcon.src = "https://raw.githubusercontent.com/TheCodeHere/TheCodeHere.github.io/547fc1827d29deccf4dbeeb2c8684f689482bbd4/Icons/moon-svgrepo-com.svg";
       }
       localStorage.setItem("theme", theme);
     };
@@ -159,56 +157,7 @@
       const savedTheme = localStorage.getItem("theme") || "light";
       setTheme(savedTheme);
     });
-    
 
-   /*
-    const toggleButton = document.getElementById('toggle-dark');
-    const themeIcon = document.getElementById('theme-icon');
-
-    const sunIcon = 'https://raw.githubusercontent.com/TheCodeHere/TheCodeHere.github.io/547fc1827d29deccf4dbeeb2c8684f689482bbd4/Icons/sun-svgrepo-com.svg';
-    const moonIcon = 'https://raw.githubusercontent.com/TheCodeHere/TheCodeHere.github.io/547fc1827d29deccf4dbeeb2c8684f689482bbd4/Icons/moon-svgrepo-com.svg';
-
-    // Cambiar ícono dependiendo del modo
-    function updateIcon(isDark) {
-      themeIcon.src = isDark ? sunIcon : moonIcon;
-      themeIcon.alt = isDark ? "Sun icon" : "Moon icon";
-    }
-
-    // Cambiar tema y guardar en localStorage
-    function toggleTheme() {
-      const isDark = document.body.classList.toggle('dark');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      updateIcon(isDark);
-    }
-
-    // Inicializar desde localStorage
-    window.onload = () => {
-      const savedTheme = localStorage.getItem('theme');
-      const isDark = savedTheme === 'dark';
-      if (isDark) document.body.classList.add('dark');
-      updateIcon(isDark);
-    }
-
-    toggleButton.addEventListener('click', toggleTheme);
-
-    */
-    /*
-    const toggle = document.getElementById("dark-mode-toggle");
-
-    // Cambiar tema al hacer clic
-    toggle.addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
-      localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
-    });
-
-    // Mantener preferencia entre sesiones
-    window.addEventListener("DOMContentLoaded", () => {
-      const theme = localStorage.getItem("theme");
-      if (theme === "dark") {
-        document.body.classList.add("dark-mode");
-      }
-    });
-    */
   </script>
 
 </body>
