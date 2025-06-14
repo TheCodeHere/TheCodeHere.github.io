@@ -1,50 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>Post</title>
-
-  <!-- KaTeX CSS for math rendering -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
-          onload="renderMathInElement(document.body);"></script>
-
-  <!-- Marked.js for Markdown rendering -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
-  <style>
-    body {
-      max-width: 800px;
-      margin: auto;
-      font-family: Georgia, serif;
-      padding: 2rem;
-      background-color: #fff;
-      color: #111;
-    }
-    h1, h2 {
-      color: #007acc;
-    }
-    img {
-      max-width: 100%;
-    }
-    .post-meta {
-      font-size: 0.9em;
-      color: gray;
-    }
-  </style>
+  <link rel="stylesheet" href="assets/estilos.css">
 </head>
 <body>
-
   <nav>
-    <a href="index.html">Home</a> |
-    <a href="tags.html">Tags</a> |
-    <a href="#">About</a>
+    <a href="index.html">Home</a> | <a href="tags.html">Tags</a>
   </nav>
 
-  <div id="post-content">Loading...</div>
+  <main>
+    <div id="post-content">Cargando post...</div>
+  </main>
 
-  <script src="https://TheCodeHere.github.io/markdown-loader.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const post = params.get('post');
+    const contentDiv = document.getElementById('post-content');
+
+    if (!post) {
+      contentDiv.innerHTML = "<p style='color:red;'>No se especificó un post.</p>";
+    } else {
+      const basePath = window.location.pathname.split('/').slice(0, -1).join('/');
+      const url = `${basePath}/posts/${post}.markdown`;
+
+      fetch(url)
+        .then(response => {
+          if (!response.ok) throw new Error("No se encontró el post.");
+          return response.text();
+        })
+        .then(markdown => {
+          const match = markdown.match(/^---([\s\S]+?)---([\s\S]*)$/);
+          let metadata = {}, content = markdown;
+
+          if (match) {
+            const metaLines = match[1].trim().split('\n');
+            metaLines.forEach(line => {
+              const [key, ...rest] = line.split(':');
+              metadata[key.trim()] = rest.join(':').trim();
+            });
+            content = match[2].trim();
+          }
+
+          let html = `<h1>${metadata.title || 'Post'}</h1>`;
+          if (metadata.date) html += `<p><em>${metadata.date}</em></p>`;
+          if (metadata.excerpt) html += `<p>${metadata.excerpt}</p>`;
+          html += marked.parse(content);
+
+          contentDiv.innerHTML = html;
+
+          // Si usas KaTeX o MathJax, podrías llamar aquí a renderMathInElement o MathJax.typeset()
+        })
+        .catch(err => {
+          contentDiv.innerHTML = `<p style="color:red;">Error: ${err.message}</p>`;
+          console.error(err);
+        });
+    }
+  </script>
 </body>
 </html>
