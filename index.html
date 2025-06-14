@@ -154,7 +154,7 @@
   </header>
 
   <main>
-    <ul class="post-list">
+    <ul class="post-list" id="post-list">
       <!-- Aquí se insertarán dinámicamente los posts -->
       
       <li>
@@ -195,41 +195,41 @@
         <div class="post-date">January 3, 2025</div>
       </li>
 
+
     </ul>
   </main>
 
   <div id="post-list">Cargando publicaciones...</div>
 
   <script>
-    fetch("posts/posts.json")
-      .then(response => response.json())
-      .then(posts => {
-        const container = document.getElementById("post-list");
-        if (!container) return;
+  fetch("posts/posts.json")
+    .then(response => response.json())
+    .then(posts => {
+      const list = document.getElementById("post-list");
+      if (!list) return;
 
-        container.innerHTML = ""; // Limpia el mensaje de "Cargando..."
+      list.innerHTML = "";  // Limpia el mensaje de "Cargando..."
 
-        posts.forEach(post => {
-          const postEl = document.createElement("div");
-          postEl.className = "post-preview";
+      posts.forEach(post => {
+        const li = document.createElement("li");
 
-          const tags = post.tags.map(tag => `<span class="tag">${tag}</span>`).join(" ");
+        const tagsHTML = post.tags.map(tag => `<span class="tag">${tag}</span>`).join(" ");
 
-          postEl.innerHTML = `
-            <h2><a href="${post.link}">${post.title}</a></h2>
-            <p class="post-excerpt">${post.excerpt}</p>
-            <p class="post-tags">${tags}</p>
-            <p class="post-date">${post.date}</p>
-            <hr>
-          `;
+        li.innerHTML = `
+          <img class="post-image" src="${post.image}" alt="Post Cover">
+          <div class="post-title"><a href="${post.link}">${post.title}</a></div>
+          <div class="post-excerpt">${post.excerpt}</div>
+          <div class="post-tags">${tagsHTML}</div>
+          <div class="post-date">${post.date}</div>
+        `;
 
-          container.appendChild(postEl);
-        });
-      })
-      .catch(err => {
-        document.getElementById("post-list").innerHTML = "<p style='color:red;'>Error al cargar los posts.</p>";
-        console.error(err);
+        list.appendChild(li);
       });
+    })
+    .catch(error => {
+      document.getElementById("post-list").innerHTML = "<li>Error al cargar los posts.</li>";
+      console.error(error);
+    });
   </script>
 
 
