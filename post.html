@@ -80,6 +80,8 @@
       const url = `${location.origin}${location.pathname.replace(/\/[^\/]*$/, '')}/posts/${post}.markdown`;
       //const url = `TheCodeHere.github.io/posts/${post}.markdown`;
 
+      console.log("Valor de URL:", url);
+
       fetch(url)
         .then(response => {
           if (!response.ok) throw new Error("No se encontró el post.");
