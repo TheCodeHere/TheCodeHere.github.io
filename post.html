@@ -9,13 +9,40 @@
 
   <!-- Estilos mínimos embebidos -->
   <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --link-color: #0645ad;
+    }
+
+    body.dark-mode {
+      --bg-color: #121212;
+      --text-color: #e0e0e0;
+      --link-color: #4da6ff;
+    }
+
     body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s ease, color 0.3s ease;
       font-family: sans-serif;
-      max-width: 700px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      background: #fdfdfd;
-      color: #333;
+    }
+
+    a {
+      color: var(--link-color);
+    }
+
+    /* Mejora para bloques de código si usas Markdown */
+    pre, code {
+      background-color: rgba(0, 0, 0, 0.05);
+      padding: 0.5em;
+      border-radius: 4px;
+      display: block;
+      overflow-x: auto;
+    }
+
+    body.dark-mode pre, body.dark-mode code {
+      background-color: #1e1e1e;
     }
 
     nav {
@@ -64,14 +91,34 @@
   </style>
 </head>
 
+
+/* Tema claro por defecto */
+body {
+  background-color: white;
+  color: black;
+}
+
+/* Tema oscuro */
+body.dark-mode {
+  background-color: #121212;
+  color: #eee;
+}
+
+/* Botón */
+#dark-mode-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
+
+
 <body>
   <nav>
     <a href="index.html">Home</a> 
     <a href="tags.html">Tags</a>
     <a href="#">About</a> | 
-    <span id="toggle-dark">
-        <img id="theme-icon" src="https://raw.githubusercontent.com/TheCodeHere/TheCodeHere.github.io/547fc1827d29deccf4dbeeb2c8684f689482bbd4/Icons/sun-svgrepo-com.svg" alt="Theme icon">
-      </span>
+    <button id="dark-mode-toggle">Modo Oscuro</button>
   </nav>
 
   <main>
@@ -104,34 +151,22 @@
     }
 
     // BOTTON
-    const toggleButton = document.getElementById('toggle-dark');
-    const themeIcon = document.getElementById('theme-icon');
+    const toggle = document.getElementById("dark-mode-toggle");
 
-    const sunIcon = 'https://raw.githubusercontent.com/TheCodeHere/TheCodeHere.github.io/547fc1827d29deccf4dbeeb2c8684f689482bbd4/Icons/sun-svgrepo-com.svg';
-    const moonIcon = 'https://raw.githubusercontent.com/TheCodeHere/TheCodeHere.github.io/547fc1827d29deccf4dbeeb2c8684f689482bbd4/Icons/moon-svgrepo-com.svg';
+    // Cambiar tema al hacer clic
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
+    });
 
-    // Cambiar ícono dependiendo del modo
-    function updateIcon(isDark) {
-      themeIcon.src = isDark ? sunIcon : moonIcon;
-      themeIcon.alt = isDark ? "Sun icon" : "Moon icon";
-    }
-
-    // Cambiar tema y guardar en localStorage
-    function toggleTheme() {
-      const isDark = document.body.classList.toggle('dark');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      updateIcon(isDark);
-    }
-
-    // Inicializar desde localStorage
-    window.onload = () => {
-      const savedTheme = localStorage.getItem('theme');
-      const isDark = savedTheme === 'dark';
-      if (isDark) document.body.classList.add('dark');
-      updateIcon(isDark);
-    }
-
-    toggleButton.addEventListener('click', toggleTheme);
+    // Mantener preferencia entre sesiones
+    window.addEventListener("DOMContentLoaded", () => {
+      const theme = localStorage.getItem("theme");
+      if (theme === "dark") {
+        document.body.classList.add("dark-mode");
+      }
+    });
   </script>
+  
 </body>
 </html>
