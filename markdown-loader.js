@@ -12,7 +12,7 @@ if (!contentContainer) {
   console.warn("Falta el parámetro ?post= en la URL.");
 } else {
   // Intenta cargar el archivo markdown
-  fetch(`./posts/${postFile}.markdown`)
+  fetch(`https://TheCodeHere.github.io/posts/${postFile}.markdown`)
     .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP error: ${response.status} — ${response.statusText}`);

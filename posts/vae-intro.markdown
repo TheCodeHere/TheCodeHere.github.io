@@ -20,5 +20,3 @@ $$
 $$
 
 ## Visualization
-
-![Latent space visualization](posts_images/VAE_Basic.png)
