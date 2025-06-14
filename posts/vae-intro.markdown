@@ -3,7 +3,7 @@ title: "What is wrong with VAEs?"
 date: 2025-06-13
 tags: [VAE, Generative Models, Deep Learning]
 country: us
-cover_image: "images/VAE_Basic.png"
+cover_image: "posts_images/VAE_Basic.png"
 excerpt: "A deep dive into the limitations of Variational Autoencoders, including ELBO collapse and posterior mismatch."
 ---
 
@@ -21,4 +21,4 @@ $$
 
 ## Visualization
 
-![Latent space visualization](images/VAE_Basic.png)
+![Latent space visualization](posts_images/VAE_Basic.png)
