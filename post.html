@@ -70,8 +70,8 @@
     const post = params.get('post');
     const contentDiv = document.getElementById('post-content');
 
-    const debugDiv = document.getElementById('debug');
-    debugDiv.innerText = `Valor de post: ${post}\nParámetros completos: ${params.toString()}`;
+    console.log("Valor de params:", params);
+    console.log("Valor de post:", post);
 
     if (!post) {
       contentDiv.innerHTML = "<p style='color:red;'>No se especificó un post.</p>";
