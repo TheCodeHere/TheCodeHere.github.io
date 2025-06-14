@@ -59,23 +59,25 @@
 
 <body>
   <nav>
-    <a href="index.html">Home</a> | <a href="tags.html">Tags</a>
+    <a href="index.html">Home</a> 
+    <a href="tags.html">Tags</a>
+    <a href="#">About</a> |
   </nav>
 
   <main>
-    <div id="post-content">Cargando post...</div>
+    <div id="content">Cargando post...</div>
   </main>
 
   <script>
     const params = new URLSearchParams(window.location.search);
     const post = params.get('post');
-    const contentDiv = document.getElementById('post-content');
+    //const contentDiv = document.getElementById('post-content');
 
     //console.log("Valor de params:", params);
     //console.log("Valor de post:", post);
 
     if (!post) {
-      contentDiv.innerHTML = "<p style='color:red;'>No se especificó un post.</p>";
+      document.getElementById('content').innerHTML = "<p style='color:red;'>No se especificó un post.</p>";
     } else {
       const url = `${location.origin}${location.pathname.replace(/\/[^\/]*$/, '')}/posts/${post}.md`;
 
