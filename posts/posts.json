@@ -2,11 +2,11 @@
   {
     "id": "post-1",
     "title": "Post-Test",
-    "tags": ["NLP", "Transformers", "Survey"],
+    "tags": ["tag1", "tag2", "tag2"],
     "excerpt": "Post para realizar pruebas",
     "image": "https://raw.githubusercontent.com/TheCodeHere/TheCodeHere.github.io/547fc1827d29deccf4dbeeb2c8684f689482bbd4/Portraits/image_placeholder_600x400.svg",
     "date": "January 4, 2025",
-    "language": "es",
+    "language": "Es",
     "link": "post-ejemplo"
   }
 ]
