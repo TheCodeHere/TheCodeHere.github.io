@@ -197,6 +197,40 @@
     </ul>
   </main>
 
+  <div id="post-list">Cargando publicaciones...</div>
+
+  <script>
+    fetch("posts/posts.json")
+      .then(response => response.json())
+      .then(posts => {
+        const container = document.getElementById("post-list");
+        if (!container) return;
+
+        container.innerHTML = ""; // Limpia el mensaje de "Cargando..."
+
+        posts.forEach(post => {
+          const postEl = document.createElement("div");
+          postEl.className = "post-preview";
+
+          const tags = post.tags.map(tag => `<span class="tag">${tag}</span>`).join(" ");
+
+          postEl.innerHTML = `
+            <h2><a href="${post.link}">${post.title}</a></h2>
+            <p class="post-excerpt">${post.excerpt}</p>
+            <p class="post-tags">${tags}</p>
+            <p class="post-date">${post.date}</p>
+            <hr>
+          `;
+
+          container.appendChild(postEl);
+        });
+      })
+      .catch(err => {
+        document.getElementById("post-list").innerHTML = "<p style='color:red;'>Error al cargar los posts.</p>";
+        console.error(err);
+      });
+  </script>
+
 
   <script>
     const toggleButton = document.getElementById('toggle-dark');

@@ -1,0 +1,10 @@
+[
+  {
+    "id": "post-1",
+    "title": "Post-Test",
+    "tags": ["NLP", "Transformers", "Survey"],
+    "excerpt": "Post para realizar pruebas",
+    "link": "index.html#post-1"
+    "date": "January 4, 2025"
+  }
+]
