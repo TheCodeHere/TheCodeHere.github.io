@@ -47,13 +47,6 @@
       background-color: #1e1e1e;
     }
 
-    header {
-      background: var(--header-bg);
-      padding: 1rem 2rem;
-      text-align: center;
-      border-bottom: 1px solid var(--border-color);
-    }
-
     nav {
       max-width: 850px;
       margin: 2rem auto 1rem auto;  /* margen superior, laterales, inferior */
@@ -62,12 +55,19 @@
       justify-content: space-between;
       align-items: center;
       font-size: 1rem;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
     }
 
     nav a {
       margin-right: 10px;
       color: #007acc;
       text-decoration: none;
+    }
+
+    body.dark-mode nav {
+      border-bottom: 1px solid #444;
     }
 
     h1 {
@@ -120,20 +120,18 @@
 </head>
 
 <body>
-  <header>
-    <nav>
-      <div class="nav-links">
-        <a href="index.html">Home</a> |
-        <a href="tags.html">Tags</a> |
-        <a href="#">About</a>
-      </div>
-      <span id="toggle-dark" style="cursor: pointer;">
-          <img id="theme-icon"
-               src="https://raw.githubusercontent.com/TheCodeHere/TheCodeHere.github.io/547fc1827d29deccf4dbeeb2c8684f689482bbd4/Icons/sun-svgrepo-com.svg" 
-               alt="Theme icon">
-      </span>
-    </nav>
-  </header>
+  <nav>
+    <div class="nav-links">
+      <a href="index.html">Home</a> |
+      <a href="tags.html">Tags</a> |
+      <a href="#">About</a>
+    </div>
+    <span id="toggle-dark" style="cursor: pointer;">
+        <img id="theme-icon"
+             src="https://raw.githubusercontent.com/TheCodeHere/TheCodeHere.github.io/547fc1827d29deccf4dbeeb2c8684f689482bbd4/Icons/sun-svgrepo-com.svg" 
+             alt="Theme icon">
+    </span>
+  </nav>
 
   <main>
     <div id="content">Cargando post...</div>
