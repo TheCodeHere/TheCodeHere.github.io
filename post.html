@@ -55,9 +55,9 @@
       justify-content: space-between;
       align-items: center;
       font-size: 1rem;
-      border-bottom: 1px solid #aaa; //ccc
-      padding-bottom: 0.5rem;
-      margin-bottom: 1rem;
+      border-bottom: 2px solid #aaa; //ccc
+      padding-bottom: 2rem; /* 0.5rem  Un poco de espacio interior abajo para que la línea no esté pegada al texto*/
+      margin-bottom: 1rem; /*Un margen inferior para separar el nav del contenido del post.*/
     }
 
     nav a {
@@ -66,8 +66,15 @@
       text-decoration: none;
     }
 
+    /*
+    Este ejemplo define:
+    1px: grosor del borde
+    solid: estilo de línea continua
+    #ccc: color gris claro
+    */
+
     body.dark-mode nav {
-      border-bottom: 1px solid #777; //444
+      border-bottom: 2px solid #777; /*1px solid 444*/
     }
 
     h1 {
