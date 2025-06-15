@@ -301,73 +301,97 @@
     toggleButton.addEventListener('click', toggleTheme);
   </script>
 
-  <!-- Particles.js library -->
+<!-- Particles.js library -->
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
 <script>
-  particlesJS("particles-js", {
-    particles: {
-      number: {
-        value: 60,
-        density: {
-          enable: true,
-          value_area: 800
-        }
-      },
-      color: {
-        value: "#aaaaaa"
-      },
-      shape: {
-        type: "circle"
-      },
-      opacity: {
-        value: 0.3,
-        random: true
-      },
-      size: {
-        value: 2,
-        random: true
-      },
-      line_linked: {
-        enable: true,
-        distance: 120,
-        color: "#cccccc",
-        opacity: 0.4,
-        width: 1
-      },
-      move: {
-        enable: true,
-        speed: 1.2,
-        direction: "none",
-        out_mode: "out"
-      }
-    },
-    interactivity: {
-      detect_on: "canvas",
-      events: {
-        onhover: {
-          enable: true,
-          mode: "grab"
-        },
-        onclick: {
-          enable: true,
-          mode: "push"
-        }
-      },
-      modes: {
-        grab: {
-          distance: 140,
-          line_linked: {
-            opacity: 0.5
+  const getParticleColor = () =>
+    document.body.classList.contains("dark") || document.body.classList.contains("dark-mode")
+      ? "#dddddd"
+      : "#444444";
+
+  function initParticles() {
+    particlesJS("particles-js", {
+      particles: {
+        number: {
+          value: 60,
+          density: {
+            enable: true,
+            value_area: 800
           }
         },
-        push: {
-          particles_nb: 4
+        color: {
+          value: getParticleColor()
+        },
+        shape: {
+          type: "circle"
+        },
+        opacity: {
+          value: 0.3,
+          random: true
+        },
+        size: {
+          value: 2,
+          random: true
+        },
+        line_linked: {
+          enable: true,
+          distance: 120,
+          color: getParticleColor(),
+          opacity: 0.4,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 1.2,
+          direction: "none",
+          out_mode: "out"
         }
-      }
-    },
-    retina_detect: true
-  });
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: {
+            enable: true,
+            mode: "grab"
+          },
+          onclick: {
+            enable: true,
+            mode: "push"
+          }
+        },
+        modes: {
+          grab: {
+            distance: 140,
+            line_linked: {
+              opacity: 0.5
+            }
+          },
+          push: {
+            particles_nb: 4
+          }
+        }
+      },
+      retina_detect: true
+    });
+  }
+
+  // Inicializar al cargar
+  window.addEventListener("DOMContentLoaded", initParticles);
+
+  // Reinicializar si se cambia el tema
+  const toggleDarkButton = document.getElementById("toggle-dark");
+
+  if (toggleDarkButton) {
+    toggleDarkButton.addEventListener("click", () => {
+      // Destruir el canvas existente
+      const canvas = document.querySelector("#particles-js > canvas");
+      if (canvas) canvas.remove();
+
+      // Esperar un breve momento para que se aplique el tema y luego reiniciar
+      setTimeout(initParticles, 200);
+    });
+  }
 </script>
 
 </body>
