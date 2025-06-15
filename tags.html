@@ -151,7 +151,7 @@
   <section id="results" class="post-results"></section>
 
   <script>
-    const posts = [
+    /*const posts = [
       {
         id: "post-1",
         title: "A Survey on Large Language Models",
@@ -180,21 +180,46 @@
         excerpt: "An overview of models capable of processing images, text, and more.",
         link: "index.html#post-4"
       }
-    ];
+    ];*/
 
     const tagMap = {};
+    let posts = [];
 
-    posts.forEach(post => {
+    fetch('posts/posts.json')
+      .then(response => {
+        if (!response.ok) throw new Error("No se pudo cargar posts.json");
+        return response.json();
+      })
+      .then(data => {
+        posts = data;
+
+        posts.forEach(post => {
+          post.tags.forEach(tag => {
+            if (!tagMap[tag]) tagMap[tag] = [];
+            tagMap[tag].push(post);
+          });
+        });
+
+        renderTagList();
+      })
+      .catch(error => {
+        console.error("Error al cargar los posts:", error);
+        document.getElementById('tag-list').innerHTML = "<li>Error al cargar las etiquetas.</li>";
+      });
+
+    /*posts.forEach(post => {
       post.tags.forEach(tag => {
         if (!tagMap[tag]) tagMap[tag] = [];
         tagMap[tag].push(post);
       });
-    });
+    });*/
 
     const tagList = document.getElementById('tag-list');
     const results = document.getElementById('results');
 
     function renderTagList() {
+      tagList.innerHTML = ''; // Limpiar antes de renderizar
+
       Object.entries(tagMap)
         .sort((a, b) => a[0].localeCompare(b[0]))
         .forEach(([tag, tagPosts]) => {
@@ -229,7 +254,7 @@
         const title = document.createElement('div');
         title.className = 'post-title';
         const link = document.createElement('a');
-        link.href = post.link;
+        link.href = `post.html?post=${post.link}`; //post.link;
         link.textContent = post.title;
         link.style.color = "inherit";
         title.appendChild(link);
@@ -275,6 +300,6 @@
 
     toggleButton.addEventListener('click', toggleTheme);
   </script>
-  
+
 </body>
 </html>
