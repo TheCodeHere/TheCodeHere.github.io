@@ -47,10 +47,30 @@
       background-color: #1e1e1e;
     }
 
+    /*
+    max-width: 850px; → mismo ancho que el <main> para coherencia visual.
+    margin: 2rem auto 1rem auto; → separa el nav del borde superior e inferior.
+    padding: 0 1.5rem; → coherente con el padding interno del <main>.
+    display: flex; justify-content: space-between; → distribución clara entre enlaces y, por ejemplo, el botón de modo oscuro.
+    font-size: 1rem; → tipografía sobria, legible.
+    margin-bottom: establecer el espacio que hay debajo de un elemento.
+    */
+
+    nav {
+      max-width: 850px;
+      margin: 2rem auto 1rem auto;  /* margen superior, laterales, inferior */
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1rem;
+    }
+    /*
     nav {
       margin-bottom: 1.5rem;
       font-size: 0.95rem;
     }
+    */
 
     nav a {
       margin-right: 10px;
@@ -65,13 +85,7 @@
     em {
       color: #666;
     }
-    /*
-    main {
-      max-width: 700px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    */
+
     main {
       max-width: 800px;
       margin: 40px auto;
