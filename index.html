@@ -45,7 +45,6 @@
       font-size: 1.8rem;
     }
 
-
     nav {
       margin-top: 0.5rem;
       display: inline-flex;
@@ -74,6 +73,13 @@
       max-width: 700px;
       margin: 2rem auto;
       padding: 0 1rem;
+    }
+
+    .nav-links a {
+      margin: 0 0.4rem; /* Reduce espacio entre enlaces */
+      text-decoration: none;
+      color: inherit;
+      display: inline;
     }
 
     .post-list {
@@ -144,9 +150,11 @@
     <h1>The Spanish Machine Learning Blog</h1>
     <h3>by Jorge G. Zapata</h3>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="tags.html">Tags</a>
-      <a href="#">About</a> |
+      <div class="nav-links">
+        <a href="index.html">Home</a> |
+        <a href="tags.html">Tags</a> |
+        <a href="#">About</a>
+      </div>
       <span id="toggle-dark">
         <img id="theme-icon" src="https://raw.githubusercontent.com/TheCodeHere/TheCodeHere.github.io/547fc1827d29deccf4dbeeb2c8684f689482bbd4/Icons/sun-svgrepo-com.svg" alt="Theme icon">
       </span>
