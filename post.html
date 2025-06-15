@@ -106,6 +106,13 @@
       color: #555;
     }
 
+    .nav-links a {
+      margin: 0 0.4rem; /* Reduce espacio entre enlaces */
+      text-decoration: none;
+      color: inherit;
+      display: inline;
+    }
+
     pre, code {
       background: #f0f0f0;
       padding: 0.2em 0.4em;
@@ -122,9 +129,11 @@
 
 <body>
   <nav>
-    <a href="index.html">Home</a> 
-    <a href="tags.html">Tags</a>
-    <a href="#">About</a> | 
+    <div class="nav-links">
+      <a href="index.html">Home</a> |
+      <a href="tags.html">Tags</a> |
+      <a href="#">About</a>
+    </div>
     <span id="toggle-dark" style="cursor: pointer;">
         <img id="theme-icon"
              src="https://raw.githubusercontent.com/TheCodeHere/TheCodeHere.github.io/547fc1827d29deccf4dbeeb2c8684f689482bbd4/Icons/sun-svgrepo-com.svg" 
