@@ -35,11 +35,6 @@
       font-size: 2rem;
     }
 
-    /*nav {
-      margin-bottom: 1.5rem;
-      font-size: 0.95rem;
-    }*/
-
     nav {
       max-width: 700px;
       margin: 2rem auto 1rem auto;  /* margen superior, laterales, inferior */
@@ -151,37 +146,6 @@
   <section id="results" class="post-results"></section>
 
   <script>
-    /*const posts = [
-      {
-        id: "post-1",
-        title: "A Survey on Large Language Models",
-        tags: ["NLP", "Transformers", "Survey"],
-        excerpt: "This survey explores the architecture, training objectives, scaling laws, and evaluation benchmarks of current large language models.",
-        link: "index.html#post-1"
-      },
-      {
-        id: "post-2",
-        title: "Prompt Engineering Techniques",
-        tags: ["Prompting", "LLMs", "Few-shot"],
-        excerpt: "Discover advanced prompting strategies for fine-tuning the output of large language models with minimal training data.",
-        link: "index.html#post-2"
-      },
-      {
-        id: "post-3",
-        title: "Chain-of-Thought Reasoning in LLMs",
-        tags: ["Reasoning", "Chain-of-Thought", "AI Alignment"],
-        excerpt: "How reasoning via intermediate steps improves language model accuracy on complex tasks.",
-        link: "index.html#post-3"
-      },
-      {
-        id: "post-4",
-        title: "LLMs for Multimodal Reasoning",
-        tags: ["Multimodal", "LLMs", "Reasoning"],
-        excerpt: "An overview of models capable of processing images, text, and more.",
-        link: "index.html#post-4"
-      }
-    ];*/
-
     const tagMap = {};
     let posts = [];
 
@@ -206,13 +170,6 @@
         console.error("Error al cargar los posts:", error);
         document.getElementById('tag-list').innerHTML = "<li>Error al cargar las etiquetas.</li>";
       });
-
-    /*posts.forEach(post => {
-      post.tags.forEach(tag => {
-        if (!tagMap[tag]) tagMap[tag] = [];
-        tagMap[tag].push(post);
-      });
-    });*/
 
     const tagList = document.getElementById('tag-list');
     const results = document.getElementById('results');
