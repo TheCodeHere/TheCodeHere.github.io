@@ -7,6 +7,10 @@ Este es un **post de prueba** escrito en *Markdown* para verificar la carga din√
 - Punto uno
 - Punto dos
 - Punto tres
+- Punto cuatro
+- Punto cinco
+- Punto seis
+
 
 ```python
 def saludo():
